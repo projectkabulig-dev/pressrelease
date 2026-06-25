@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project KABULIG — Updates</title>
+
+<!-- Open Graph: controls how this looks when shared on Facebook/Messenger -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Project KABULIG">
+<meta property="og:title" content="Project KABULIG Updates — New App Releases & Features">
+<meta property="og:description" content="Latest learning tools, feature rollouts, and release notes from Project KABULIG — AI-assisted numeracy and literacy apps for all 13 island districts of SDO Romblon.">
+<meta property="og:image" content="https://projectkabulig-dev.github.io/assets/kabulig-og-image.png">
+<meta property="og:url" content="https://projectkabulig-dev.github.io/updates/">
+<meta property="og:locale" content="en_PH">
+
+<!-- Same info for Twitter/X card, harmless to include even if unused -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Project KABULIG Updates — New App Releases & Features">
+<meta name="twitter:description" content="Latest learning tools, feature rollouts, and release notes from Project KABULIG — AI-assisted numeracy and literacy apps for all 13 island districts of SDO Romblon.">
+<meta name="twitter:image" content="https://projectkabulig-dev.github.io/assets/kabulig-og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B2545;
+    --navy-deep:#06192F;
+    --navy-alt:#13315C;
+    --gold:#D4A828;
+    --gold-soft:#F0DDA0;
+    --paper:#F7F4EC;
+    --paper-card:#FFFFFF;
+    --teal:#1B7A6B;
+    --ink:#1B2330;
+    --ink-soft:#5B6477;
+    --rule: #E4DFD1;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Nunito',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* ===== Masthead ===== */
+  header.masthead{
+    background:var(--navy-deep);
+    color:#fff;
+    padding:14px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:50;
+    border-bottom:3px solid var(--gold);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand-mark{
+    width:36px;height:36px;
+    border-radius:9px;
+    background:linear-gradient(145deg, var(--gold) 0%, #B9881C 100%);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    color:var(--navy-deep);
+    font-size:18px;
+  }
+  .brand-text{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:0.2px;
+  }
+  .brand-text small{
+    display:block;
+    font-family:'Outfit',sans-serif;
+    font-weight:500;
+    font-size:10.5px;
+    letter-spacing:1.6px;
+    color:var(--gold-soft);
+    text-transform:uppercase;
+    margin-top:1px;
+  }
+  .menu-btn{
+    width:38px;height:38px;
+    border-radius:8px;
+    background:rgba(255,255,255,0.08);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    border:none;
+  }
+  .menu-btn span, .menu-btn span::before, .menu-btn span::after{
+    content:'';
+    display:block;
+    width:18px;height:2px;
+    background:#fff;
+    position:relative;
+  }
+  .menu-btn span::before{position:absolute; top:-6px;}
+  .menu-btn span::after{position:absolute; top:6px;}
+
+  .subbar{
+    background:var(--navy);
+    color:#EDE7D6;
+    font-family:'Outfit',sans-serif;
+    font-size:12.5px;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    padding:8px 18px;
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+  }
+  .subbar span{white-space:nowrap; opacity:0.7;}
+  .subbar span.active{opacity:1; color:var(--gold-soft); font-weight:600;}
+
+  main{max-width:760px; margin:0 auto; padding:0 0 60px;}
+
+  /* ===== Feed view ===== */
+  .feed-intro{
+    padding:26px 18px 8px;
+  }
+  .eyebrow{
+    font-family:'Outfit',sans-serif;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:600;
+  }
+  .feed-intro h1{
+    font-family:'Baloo 2',sans-serif;
+    font-size:26px;
+    margin:6px 0 4px;
+    color:var(--navy);
+  }
+  .feed-intro p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:14.5px;
+    line-height:1.5;
+  }
+
+  .archipelago{
+    display:flex;
+    gap:4px;
+    margin:14px 0 0;
+  }
+  .archipelago i{
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--rule);
+  }
+  .archipelago i.lit{background:var(--gold);}
+
+  .visitor-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:16px;
+    padding:6px 12px;
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    border-radius:20px;
+    font-family:'Outfit',sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .visitor-badge .dot-live{
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--teal);
+  }
+  .visitor-badge strong{
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .site-link-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:14px;
+  }
+  .site-link-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--navy-deep);
+    color:#fff;
+    font-family:'Outfit',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    padding:9px 16px;
+    border-radius:20px;
+    border:1px solid var(--gold);
+  }
+  .site-link-btn svg{width:14px;height:14px;}
+
+  /* Hero card */
+  .hero-card{
+    margin:18px 18px 6px;
+    background:var(--paper-card);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 1px 0 var(--rule);
+    border:1px solid var(--rule);
+    cursor:pointer;
+  }
+  .hero-media{
+    height:190px;
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-alt) 55%, var(--teal) 100%);
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    padding:16px;
+  }
+  .hero-media .tag{
+    font-family:'Outfit',sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    background:var(--gold);
+    color:var(--navy-deep);
+    padding:5px 10px;
+    border-radius:5px;
+  }
+  .hero-body{padding:16px 18px 20px;}
+  .hero-body h2{
+    font-family:'Baloo 2',sans-serif;
+    font-size:21px;
+    line-height:1.25;
+    margin:0 0 8px;
+    color:var(--navy);
+  }
+  .hero-body p{
+    margin:0;
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.55;
+  }
+  .meta-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:12px;
+    font-family:'Outfit',sans-serif;
+    font-size:11.5px;
+    color:#8A8E78;
+  }
+  .meta-row .dot{width:3px;height:3px;border-radius:50%;background:#C8C2AC;}
+
+  /* Card grid */
+  .grid-label{
+    padding:24px 18px 10px;
+    font-family:'Outfit',sans-serif;
+    font-size:12px;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-top:1px solid var(--rule);
+    margin:10px 18px 0;
+  }
+  .card-list{padding:0 18px;}
+  .card{
+    display:flex;
+    gap:14px;
+    padding:16px 0;
+    border-bottom:1px solid var(--rule);
+    cursor:pointer;
+  }
+  .card:last-child{border-bottom:none;}
+  .card-thumb{
+    flex:0 0 76px;
+    height:76px;
+    border-radius:10px;
+    background:var(--navy-alt);
+    position:relative;
+    overflow:hidden;
+  }
+  .card-thumb .glyph{
+    position:absolute;
+    inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    color:rgba(255,255,255,0.9);
+    font-size:22px;
+  }
+  .card-content h3{
+    font-family:'Baloo 2',sans-serif;
+    font-size:16px;
+    margin:0 0 5px;
+    color:var(--navy);
+    line-height:1.3;
+  }
+  .card-content p{
+    margin:0;
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.45;
+  }
+  .card-content .meta-row{margin-top:6px;}
+
+  /* ===== Article detail view ===== */
+  .article-view{display:none;}
+  .article-view.show{display:block;}
+  .feed-view.hide{display:none;}
+
+  .back-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:16px 18px 0;
+    font-family:'Outfit',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:var(--teal);
+    cursor:pointer;
+    width:fit-content;
+  }
+  .back-btn svg{width:16px;height:16px;}
+
+  .article-hero{
+    margin:16px 18px 0;
+    height:220px;
+    border-radius:14px;
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-alt) 55%, var(--teal) 100%);
+    position:relative;
+  }
+  .article-hero .glyph-big{
+    position:absolute; inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:54px;
+    color:rgba(255,255,255,0.92);
+  }
+  .caption{
+    background:var(--navy-deep);
+    color:#C9C2AA;
+    font-family:'Outfit',sans-serif;
+    font-size:11.5px;
+    padding:7px 18px;
+    margin:0 18px 22px;
+    border-radius:0 0 8px 8px;
+    margin-top:-4px;
+  }
+
+  .article-body{padding:0 18px;}
+  .article-body .eyebrow{margin-bottom:8px;}
+  .article-body h1{
+    font-family:'Baloo 2',sans-serif;
+    font-size:25px;
+    line-height:1.25;
+    color:var(--navy);
+    margin:0 0 10px;
+  }
+  .article-body .meta-row{margin-bottom:18px;}
+  .article-body p{
+    font-size:15.5px;
+    line-height:1.7;
+    color:var(--ink);
+    margin:0 0 16px;
+  }
+  .feature-box{
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--gold);
+    border-radius:8px;
+    padding:16px 18px;
+    margin:6px 0 22px;
+  }
+  .feature-box .eyebrow{color:var(--navy); margin-bottom:8px; display:block;}
+  .feature-box ul{margin:0; padding-left:18px;}
+  .feature-box li{
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--ink);
+    margin-bottom:5px;
+  }
+  .district-note{
+    font-family:'Outfit',sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    background:#EFEAD9;
+    padding:10px 14px;
+    border-radius:8px;
+    margin-bottom:28px;
+  }
+
+  /* ===== Sidebar ===== */
+  .scrim{
+    position:fixed; inset:0;
+    background:rgba(6,25,47,0.55);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.25s ease;
+    z-index:90;
+  }
+  .scrim.show{opacity:1; pointer-events:auto;}
+
+  .sidebar{
+    position:fixed;
+    top:0; right:0;
+    height:100%;
+    width:78%;
+    max-width:300px;
+    background:var(--navy-deep);
+    color:#fff;
+    z-index:100;
+    transform:translateX(100%);
+    transition:transform 0.28s ease;
+    display:flex;
+    flex-direction:column;
+    padding:20px 0;
+  }
+  .sidebar.show{transform:translateX(0);}
+
+  .sidebar-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    margin-bottom:8px;
+  }
+  .sidebar-head .brand-text{font-size:16px;}
+  .sidebar-close{
+    width:32px;height:32px;
+    border-radius:7px;
+    background:rgba(255,255,255,0.08);
+    border:none;
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    font-size:18px;
+  }
+
+  .sidebar-section{
+    font-family:'Outfit',sans-serif;
+    font-size:11px;
+    letter-spacing:1.6px;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    padding:16px 18px 8px;
+  }
+  .sidebar nav a{
+    display:block;
+    padding:11px 18px;
+    font-family:'Baloo 2',sans-serif;
+    font-size:15px;
+    color:#EDE7D6;
+  }
+  .sidebar nav a:active{background:rgba(255,255,255,0.06);}
+
+  .sidebar-social{
+    margin-top:auto;
+    padding:16px 18px 6px;
+    display:flex;
+    gap:10px;
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  .sidebar-social a{
+    width:36px;height:36px;
+    border-radius:8px;
+    background:rgba(255,255,255,0.08);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Outfit',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    color:#fff;
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brand">
+    <div class="brand-mark">K</div>
+    <div class="brand-text">Project KABULIG
+      <small>SDO Romblon · Updates</small>
+    </div>
+  </div>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span></button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-head">
+    <div class="brand-text">Project KABULIG</div>
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
+  </div>
+  <div class="sidebar-section">Browse</div>
+  <nav>
+    <a href="#" data-tab="App Releases">App Releases</a>
+    <a href="#" data-tab="ARAL Program">ARAL Program</a>
+    <a href="#" data-tab="Numeracy">Numeracy</a>
+    <a href="#" data-tab="Literacy">Literacy</a>
+    <a href="#" data-tab="Districts">Districts</a>
+  </nav>
+  <div class="sidebar-section">About</div>
+  <nav>
+    <a href="https://tinyurl.com/projectkabuligwebsite" target="_blank" rel="noopener">Project KABULIG Home</a>
+    <a href="#">Contact SDO Romblon CID</a>
+  </nav>
+  <div class="sidebar-social">
+    <a href="#" aria-label="Facebook">FB</a>
+    <a href="#" aria-label="GitHub">GH</a>
+  </div>
+</aside>
+
+<div class="subbar">
+  <span class="active">App Releases</span>
+  <span>ARAL Program</span>
+  <span>Numeracy</span>
+  <span>Literacy</span>
+  <span>Districts</span>
+</div>
+
+<main>
+
+  <!-- ===== FEED VIEW ===== -->
+  <div class="feed-view" id="feedView">
+
+    <div class="feed-intro">
+      <span class="eyebrow">Latest from the team</span>
+      <h1>Project KABULIG Updates</h1>
+      <p>New learning tools, feature rollouts, and release notes from the AI-assisted numeracy and literacy suite — built for all 13 island districts of SDO Romblon.</p>
+      <div class="archipelago" id="archipelagoDots"></div>
+      <div class="visitor-badge" id="visitorBadge">
+        <span class="dot-live"></span>
+        <span><strong id="visitorCount">96</strong> page visits and counting</span>
+      </div>
+      <div class="site-link-row">
+        <a class="site-link-btn" href="https://tinyurl.com/projectkabuligwebsite" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          Visit Project KABULIG Website
+        </a>
+      </div>
+    </div>
+
+    <article class="hero-card" data-article="0" id="heroCard">
+      <div class="hero-media">
+        <span class="tag" id="heroTag">New Release</span>
+      </div>
+      <div class="hero-body">
+        <h2 id="heroTitle"></h2>
+        <p id="heroSnippet"></p>
+        <div class="meta-row">
+          <span>Project KABULIG</span><span class="dot"></span><span id="heroTagMeta"></span><span class="dot"></span><span id="heroReadTime"></span>
+        </div>
+      </div>
+    </article>
+
+    <div class="grid-label" id="gridLabel">More Releases</div>
+    <div class="card-list" id="cardList"></div>
+    <p class="empty-state" id="emptyState" style="display:none; padding:20px 18px; color:var(--ink-soft); font-size:14px;">No releases yet in this category. Check back soon!</p>
+
+  </div>
+
+  <!-- ===== ARTICLE VIEW ===== -->
+  <div class="article-view" id="articleView">
+    <div class="back-btn" id="backBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      Back to Updates
+    </div>
+    <div class="article-hero" id="articleHero">
+      <div class="glyph-big" id="articleGlyph"></div>
+    </div>
+    <div class="caption" id="articleCaption"></div>
+    <div class="article-body">
+      <span class="eyebrow" id="articleTag">App Release</span>
+      <h1 id="articleTitle"></h1>
+      <div class="meta-row" id="articleMeta"></div>
+      <div id="articleParas"></div>
+      <div class="feature-box">
+        <span class="eyebrow" id="featuresLabel">Features at a glance</span>
+        <ul id="articleFeatures"></ul>
+      </div>
+      <div class="district-note" id="articleDistrictNote"></div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+const articles = [
+  {
+    glyph:"123",
+    tag:"New Release",
+    title:"Number Reader Goes Live: Voice-Guided Numeracy for Every District",
+    caption:"Photo: Project KABULIG",
+    date:"June 2026",
+    readTime:"5 min read",
+    categories:["Numeracy"],
+    paras:[
+      "Project KABULIG has rolled out Number Reader, a voice-guided numeracy tool that speaks numbers aloud as learners build and identify them on screen.",
+      "The app was developed for early-grade learners who benefit from hearing number names alongside visual representation, and it logs every session automatically through the program's standard Google Apps Script backend.",
+      "Number Reader is now available for use across all 13 island districts of SDO Romblon, following the same district-dropdown structure used by other KABULIG tools."
+    ],
+    features:[
+      "Web Speech API voice support for number names",
+      "District selector for all 13 SDO Romblon districts",
+      "Automatic session logging to Google Sheets",
+      "Works offline-first as a single HTML file"
+    ],
+    districtNote:"Available to all 13 districts: Alcantara, Banton, Corcuera, Concepcion, Looc, San Fernando, Cajidiocan-Magdiwang, Romblon, San Andres, Odiongan North, Odiongan South, San Agustin-Santa Maria-Calatrava, and San Jose-Santa Fe."
+  },
+  {
+    glyph:"↑",
+    tag:"Site Update",
+    title:"Project KABULIG Site Sees Traffic Surge After Two Separate Shares",
+    caption:"Photo: Project KABULIG",
+    date:"June 2026",
+    readTime:"4 min read",
+    categories:["App Releases"],
+    featuresLabel:"Key Numbers",
+    paras:[
+      "Project KABULIG's website logged 96 visits over the past week, with two distinct surges in traffic pointing to separate sharing moments rather than a steady stream of visitors, according to data pulled from the site's built-in visit tracker.",
+      "The first wave hit just after the site went out on Facebook on June 19. Within hours, dozens of mobile users were landing on the homepage, most arriving straight from Facebook's in-app browser. By the early hours of June 20, that wave had run its course, and the site went quiet for four full days.",
+      "That silence broke on June 24, when a second, larger wave of traffic arrived — this time from desktop computers running Edge, alongside new traffic sources including a shortened TinyURL link and a direct GitHub reference. This batch of visitors browsed differently too, clicking into the BASA! Fluency Checker, Grade 1 ARAL materials, and assessment pages rather than just landing on the homepage.",
+      "Facebook remained the site's biggest traffic driver overall, accounting for more than two out of every three visits across the week.",
+      "Visit the main Project KABULIG website for the complete app catalog: <a href=\"https://tinyurl.com/projectkabuligwebsite\" target=\"_blank\" rel=\"noopener\" style=\"color:#1B7A6B; font-weight:700;\">tinyurl.com/projectkabuligwebsite</a>"
+    ],
+    features:[
+      "96 total page visits logged over 7 days (June 19–25)",
+      "68% of all traffic traced back to Facebook",
+      "Second wave (June 24–25) brought 63 of the 96 total visits",
+      "Top sections visited: BASA! Fluency Checker, Grade 1 ARAL materials, Assessment pages"
+    ],
+    districtNote:"Figures reflect total page visits, not unique visitors, since the current log does not track individual visitor sessions."
+  },
+  {
+    glyph:"⚖",
+    tag:"App Release",
+    title:"Timbangan ng Numero Launches: A Balance Scale Challenge for Young Mathematicians",
+    caption:"Photo: Project KABULIG",
+    date:"May 2026",
+    readTime:"4 min read",
+    categories:["Numeracy"],
+    paras:[
+      "Timbangan ng Numero introduces a balance-scale interface where learners place number values on either side to find equivalence — turning an abstract concept into something they can see balance in real time.",
+      "The tool reinforces number sense and equality concepts ahead of more formal algebraic thinking, and fits into the broader Project KABULIG numeracy track."
+    ],
+    features:[
+      "Interactive drag-and-balance interface",
+      "Progressive difficulty levels",
+      "District dropdown and GAS logging",
+      "KABULIG navy and gold visual theme"
+    ],
+    districtNote:"Deployed division-wide alongside other Project KABULIG numeracy tools."
+  },
+  {
+    glyph:"#",
+    tag:"App Release",
+    title:"Numbers Crossword Puzzle Now Available for Grade 3 Learners",
+    caption:"Photo: Project KABULIG",
+    date:"May 2026",
+    readTime:"3 min read",
+    categories:["Numeracy"],
+    paras:[
+      "A numbers-themed crossword puzzle joins the Project KABULIG suite, giving Grade 3 learners a familiar puzzle format for practicing number words, sequences, and basic operations.",
+      "Like other KABULIG tools, it runs as a single HTML file with no installation required, deployed through the division's GitHub Pages repository."
+    ],
+    features:[
+      "Auto-checking crossword grid",
+      "Number-word and operation clues",
+      "Built-in hint system",
+      "Mobile-friendly touch input"
+    ],
+    districtNote:"Rolling out to all 13 districts as part of the SY 2026–2027 numeracy resource set."
+  },
+  {
+    glyph:"+",
+    tag:"App Release",
+    title:"Bilang Champs Adds Multiplayer-Style Leaderboards",
+    caption:"Photo: Project KABULIG",
+    date:"April 2026",
+    readTime:"3 min read",
+    categories:["Numeracy"],
+    paras:[
+      "Bilang Champs now tracks performance across attempts, giving learners a sense of progress and encouraging repeat practice without turning the experience into direct learner-vs-learner competition.",
+      "Teachers can review aggregate results through the connected Google Sheet for quick classroom insight."
+    ],
+    features:[
+      "Personal best tracking",
+      "Teacher-facing summary sheet",
+      "Difficulty auto-adjustment",
+      "Consistent KABULIG branding"
+    ],
+    districtNote:"Available now across SDO Romblon's 13 island districts."
+  },
+  {
+    glyph:"A",
+    tag:"App Release",
+    title:"Marungko Reading Tool Brings Guided Phonics Practice to All Districts",
+    caption:"Photo: Project KABULIG",
+    date:"April 2026",
+    readTime:"4 min read",
+    categories:["Literacy"],
+    paras:[
+      "The Marungko Reading Tool walks learners through the Marungko approach to phonics, sequencing sounds and letter combinations the way classroom teachers already do.",
+      "It pairs with BASA! Fluency Checker for a fuller picture of a learner's reading progress, and follows the same single-file, district-ready architecture as the rest of the suite."
+    ],
+    features:[
+      "Marungko-sequenced phonics drills",
+      "Audio playback for sound modeling",
+      "District dropdown and GAS logging",
+      "Designed for early-grade reading intervention"
+    ],
+    districtNote:"Available now across all 13 island districts of SDO Romblon."
+  },
+  {
+    glyph:"i",
+    tag:"App Release",
+    title:"BASA! Fluency Checker Tracks Oral Reading Progress",
+    caption:"Photo: Project KABULIG",
+    date:"March 2026",
+    readTime:"3 min read",
+    categories:["Literacy"],
+    paras:[
+      "BASA! Fluency Checker gives teachers a simple way to time and score oral reading passages, supporting routine fluency checks without extra paperwork.",
+      "Results sync to the division's tracking sheet so reading progress can be reviewed alongside other ARAL Program indicators."
+    ],
+    features:[
+      "Built-in reading timer",
+      "Passage library by grade level",
+      "Automatic fluency rate calculation",
+      "Google Sheets sync for teacher records"
+    ],
+    districtNote:"Deployed alongside Marungko Reading Tool across all 13 districts."
+  },
+  {
+    glyph:"§",
+    tag:"Program Update",
+    title:"ARAL Committee Terms of Reference Web App Now Live for SY 2026–2027",
+    caption:"Photo: Project KABULIG",
+    date:"June 2026",
+    readTime:"5 min read",
+    categories:["ARAL Program"],
+    paras:[
+      "The SDO Romblon ARAL Committee Terms of Reference web app is now available, organizing the Division TWG, subject coordinators, sub-committees, and all 13 district structures in one place.",
+      "Built around RA 12028, DO 018 s. 2025, and DM 064 s. 2025, the app gives every committee member a clear view of their role and reporting lines for the year ahead."
+    ],
+    features:[
+      "Tabs for Division TWG and subject coordinators",
+      "Sub-committee 1–6 structure with named members",
+      "District tabs for all 13 SDO Romblon districts",
+      "Anchored on current DepEd issuances"
+    ],
+    districtNote:"Reference tool for all 13 District ARAL Focal Persons and committee members."
+  }
+];
+
+// Render hero from the first (most recent) article
+const heroArticle = articles[0];
+document.getElementById('heroTag').textContent = heroArticle.tag;
+document.getElementById('heroTitle').textContent = heroArticle.title;
+document.getElementById('heroSnippet').textContent = heroArticle.paras[0];
+document.getElementById('heroTagMeta').textContent = heroArticle.tag;
+document.getElementById('heroReadTime').textContent = heroArticle.readTime;
+document.getElementById('heroCard').dataset.categories = heroArticle.categories.join(',');
+
+const cardList = document.getElementById('cardList');
+for(let i=1; i<articles.length; i++){
+  const a = articles[i];
+  const card = document.createElement('article');
+  card.className='card';
+  card.dataset.article = i;
+  card.dataset.categories = a.categories.join(',');
+  card.innerHTML = `
+    <div class="card-thumb"><span class="glyph">${a.glyph}</span></div>
+    <div class="card-content">
+      <h3>${a.title}</h3>
+      <p>${a.paras[0]}</p>
+      <div class="meta-row"><span>${a.date}</span><span class="dot"></span><span>${a.readTime}</span></div>
+    </div>`;
+  cardList.appendChild(card);
+}
+
+document.querySelectorAll('[data-article]').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    const idx = parseInt(el.dataset.article,10);
+    openArticle(idx);
+  });
+});
+
+const dots = document.getElementById('archipelagoDots');
+for(let i=0;i<13;i++){
+  const dot = document.createElement('i');
+  if(i < 5) dot.className='lit';
+  dots.appendChild(dot);
+}
+
+// Tab selection + category filtering
+const gridLabel = document.getElementById('gridLabel');
+const emptyState = document.getElementById('emptyState');
+
+function applyFilter(tabName){
+  const showAll = (tabName === 'App Releases' || tabName === 'Districts');
+  const items = document.querySelectorAll('[data-categories]');
+  let visibleCount = 0;
+
+  items.forEach(el=>{
+    const cats = el.dataset.categories.split(',');
+    const match = showAll || cats.includes(tabName);
+    el.style.display = match ? '' : 'none';
+    if(match) visibleCount++;
+  });
+
+  gridLabel.textContent = showAll ? 'More Releases' : `${tabName} Releases`;
+  emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+}
+
+document.querySelectorAll('.subbar span').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.subbar span').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    applyFilter(tab.textContent.trim());
+  });
+});
+
+function openArticle(idx){
+  const a = articles[idx];
+  document.getElementById('articleGlyph').textContent = a.glyph;
+  document.getElementById('articleCaption').textContent = a.caption;
+  document.getElementById('articleTag').textContent = a.tag || 'App Release';
+  document.getElementById('articleTitle').textContent = a.title;
+  document.getElementById('articleMeta').innerHTML = `<span>${a.date}</span><span class="dot"></span><span>${a.readTime}</span>`;
+  document.getElementById('articleParas').innerHTML = a.paras.map(p=>`<p>${p}</p>`).join('');
+  document.getElementById('featuresLabel').textContent = a.featuresLabel || 'Features at a glance';
+  document.getElementById('articleFeatures').innerHTML = a.features.map(f=>`<li>${f}</li>`).join('');
+  document.getElementById('articleDistrictNote').textContent = a.districtNote;
+  document.getElementById('feedView').classList.add('hide');
+  document.getElementById('articleView').classList.add('show');
+  window.scrollTo(0,0);
+}
+
+document.getElementById('backBtn').addEventListener('click', ()=>{
+  document.getElementById('articleView').classList.remove('show');
+  document.getElementById('feedView').classList.remove('hide');
+  window.scrollTo(0,0);
+});
+
+// ===== Sidebar open/close =====
+const sidebar = document.getElementById('sidebar');
+const scrim = document.getElementById('scrim');
+
+function openSidebar(){
+  sidebar.classList.add('show');
+  scrim.classList.add('show');
+}
+function closeSidebar(){
+  sidebar.classList.remove('show');
+  scrim.classList.remove('show');
+}
+
+document.getElementById('menuBtn').addEventListener('click', openSidebar);
+document.getElementById('sidebarClose').addEventListener('click', closeSidebar);
+scrim.addEventListener('click', closeSidebar);
+
+// ===== Visitor pageview counter =====
+// Currently shows a static count based on the logged sheet data.
+// To make this LIVE, deploy your Apps Script with a doGet() function that
+// returns the row count as JSON, e.g.:
+//
+//   function doGet(e) {
+//     const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1');
+//     const count = sheet.getLastRow() - 1; // minus header row
+//     return ContentService.createTextOutput(JSON.stringify({count: count}))
+//       .setMimeType(ContentService.MimeType.JSON);
+//   }
+//
+// Then uncomment the fetch block below and paste your Web App URL.
+
+// ===== Visitor pageview counter (LIVE) =====
+// Fetches the real total visit count from the Project KABULIG Apps Script Web App.
+
+const STATIC_VISITOR_COUNT = 96; // fallback shown only if the live fetch fails
+const VISITOR_API_URL = "https://script.google.com/macros/s/AKfycbxYE320c01-Icr_ffdO_-1HdWes34yN_25uVAUwVmTKzX9I9yC24NmLesEInSVQU2l_/exec";
+
+fetch(VISITOR_API_URL)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('visitorCount').textContent = data.count;
+  })
+  .catch(() => {
+    document.getElementById('visitorCount').textContent = STATIC_VISITOR_COUNT;
+  });
+
+// Sidebar links select the matching subbar tab, then close the sidebar
+document.querySelectorAll('.sidebar nav a[data-tab]').forEach(link=>{
+  link.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const tabName = link.dataset.tab;
+    const match = Array.from(document.querySelectorAll('.subbar span'))
+      .find(s => s.textContent.trim() === tabName);
+    if(match) match.click();
+    closeSidebar();
+  });
+});
+</script>
+
+</body>
+</html>
