@@ -127,38 +127,65 @@
 
   /* ===== Feed view ===== */
   .feed-intro{
-    padding:26px 18px 8px;
+    margin:0;
+    padding:48px 24px 36px;
+    background:
+      radial-gradient(circle at 85% 0%, rgba(212,168,40,0.35) 0%, transparent 45%),
+      linear-gradient(155deg, var(--navy-deep) 0%, var(--navy-alt) 45%, var(--teal) 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .feed-intro::before{
+    content:'';
+    position:absolute;
+    top:-60px; right:-60px;
+    width:220px; height:220px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.06);
   }
   .eyebrow{
     font-family:'Outfit',sans-serif;
     font-size:12px;
     letter-spacing:2px;
     text-transform:uppercase;
-    color:var(--teal);
-    font-weight:600;
+    color:var(--gold);
+    font-weight:700;
+    position:relative;
+    z-index:1;
   }
   .feed-intro h1{
     font-family:'Baloo 2',sans-serif;
-    font-size:26px;
-    margin:6px 0 4px;
-    color:var(--navy);
+    font-weight:800;
+    font-size:38px;
+    line-height:1.08;
+    margin:10px 0 14px;
+    color:#fff;
+    letter-spacing:-0.5px;
+    position:relative;
+    z-index:1;
   }
+  .feed-intro h1 .accent{ color:var(--gold-soft); }
   .feed-intro p{
     margin:0;
-    color:var(--ink-soft);
-    font-size:14.5px;
-    line-height:1.5;
+    color:rgba(255,255,255,0.78);
+    font-size:15px;
+    line-height:1.55;
+    max-width:420px;
+    position:relative;
+    z-index:1;
   }
 
   .archipelago{
     display:flex;
     gap:4px;
-    margin:14px 0 0;
+    margin:18px 0 0;
+    position:relative;
+    z-index:1;
   }
   .archipelago i{
     width:6px;height:6px;
     border-radius:50%;
-    background:var(--rule);
+    background:rgba(255,255,255,0.22);
   }
   .archipelago i.lit{background:var(--gold);}
 
@@ -166,45 +193,49 @@
     display:inline-flex;
     align-items:center;
     gap:6px;
-    margin-top:16px;
-    padding:6px 12px;
-    background:var(--paper-card);
-    border:1px solid var(--rule);
+    margin-top:18px;
+    padding:7px 14px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.22);
     border-radius:20px;
     font-family:'Outfit',sans-serif;
     font-size:12px;
-    color:var(--ink-soft);
+    color:rgba(255,255,255,0.85);
+    position:relative;
+    z-index:1;
   }
   .visitor-badge .dot-live{
     width:7px;height:7px;
     border-radius:50%;
-    background:var(--teal);
+    background:#4ADE80;
+    box-shadow:0 0 0 3px rgba(74,222,128,0.25);
   }
   .visitor-badge strong{
-    color:var(--navy);
-    font-weight:700;
+    color:#fff;
+    font-weight:800;
   }
 
   .site-link-row{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:14px;
+    margin-top:24px;
+    position:relative;
+    z-index:1;
   }
   .site-link-btn{
     display:inline-flex;
     align-items:center;
-    gap:6px;
-    background:var(--navy-deep);
-    color:#fff;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    background:var(--gold);
+    color:var(--navy-deep);
     font-family:'Outfit',sans-serif;
-    font-size:13px;
-    font-weight:600;
-    padding:9px 16px;
-    border-radius:20px;
-    border:1px solid var(--gold);
+    font-size:14.5px;
+    font-weight:700;
+    padding:14px 20px;
+    border-radius:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
   }
-  .site-link-btn svg{width:14px;height:14px;}
+  .site-link-btn svg{width:16px;height:16px;}
 
   /* Hero card */
   .hero-card{
@@ -544,9 +575,9 @@
   <div class="feed-view" id="feedView">
 
     <div class="feed-intro">
-      <span class="eyebrow">Latest from the team</span>
-      <h1>Project KABULIG Updates</h1>
-      <p>New learning tools, feature rollouts, and release notes from the AI-assisted numeracy and literacy suite — built for all 13 island districts of SDO Romblon.</p>
+      <span class="eyebrow">⚡ Latest from the team</span>
+      <h1>New learning tools, <span class="accent">built faster</span> for every island district</h1>
+      <p>Project KABULIG ships AI-assisted numeracy and literacy apps across all 13 districts of SDO Romblon — no installs, no waiting, just open and learn.</p>
       <div class="archipelago" id="archipelagoDots"></div>
       <div class="visitor-badge" id="visitorBadge">
         <span class="dot-live"></span>
