@@ -235,6 +235,16 @@
     padding:5px 10px;
     border-radius:5px;
   }
+  .hero-media .hero-glyph{
+    position:absolute;
+    top:16px;
+    right:20px;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:72px;
+    color:rgba(255,255,255,0.22);
+    line-height:1;
+  }
   .hero-body{padding:16px 18px 20px;}
   .hero-body h2{
     font-family:'Baloo 2',sans-serif;
@@ -552,6 +562,7 @@
 
     <article class="hero-card" data-article="0" id="heroCard">
       <div class="hero-media">
+        <span class="hero-glyph" id="heroGlyph"></span>
         <span class="tag" id="heroTag">New Release</span>
       </div>
       <div class="hero-body">
@@ -766,6 +777,7 @@ const articles = [
 // Render hero from the first (most recent) article
 const heroArticle = articles[0];
 document.getElementById('heroTag').textContent = heroArticle.tag;
+document.getElementById('heroGlyph').textContent = heroArticle.glyph;
 document.getElementById('heroTitle').textContent = heroArticle.title;
 document.getElementById('heroSnippet').textContent = heroArticle.paras[0];
 document.getElementById('heroTagMeta').textContent = heroArticle.tag;
@@ -888,7 +900,7 @@ scrim.addEventListener('click', closeSidebar);
 // Fetches the real total visit count from the Project KABULIG Apps Script Web App.
 
 const STATIC_VISITOR_COUNT = 96; // fallback shown only if the live fetch fails
-const VISITOR_API_URL = "https://script.google.com/macros/s/AKfycbxYE320c01-Icr_ffdO_-1HdWes34yN_25uVAUwVmTKzX9I9yC24NmLesEInSVQU2l_/exec";
+const VISITOR_API_URL = "https://script.google.com/macros/s/AKfycbz33npxYIXDq2JA7_GBhT5Vp6VfS4wsig7xeSjdNv3oXzEAPXKeQqLezoxPSZJIKhiU_A/exec";
 
 fetch(VISITOR_API_URL)
   .then(res => res.json())
